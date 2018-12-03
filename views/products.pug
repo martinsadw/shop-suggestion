@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    div(class='recommended' + (suggested.length > 0 ? '' : ' hide'))
+        h2 Recomendados:
+        div(class='product-list')
+            each product in suggested
+                a(href='/produtos/' + product.id)
+                    div(class='product')
+                        img(class='product-picture', src='https://via.placeholder.com/280x240')
+                        div(class='product-tags')
+                            each tag in product.tags
+                                span(class='tag')= tag
+                        div(class='product-info')
+                            h2(class='product-name')= product.name
+                            span(class='product-price')= 'R$ ' + product.value.toFixed(2)
+
+    div(class='product-list')
+        each product in products
+            a(href='/produtos/' + product.id)
+                div(class='product')
+                    img(class='product-picture', src='https://via.placeholder.com/280x240')
+                    div(class='product-tags')
+                        each tag in product.tags
+                            span(class='tag')= tag
+                    div(class='product-info')
+                        h2(class='product-name')= product.name
+                        span(class='product-price')= 'R$ ' + product.value.toFixed(2)
